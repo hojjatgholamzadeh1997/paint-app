@@ -25,7 +25,7 @@ window.addEventListener("load", () => {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 });
 
-// Drawing
+// Drawing with Mouse
 canvas.addEventListener("mousedown", () => {
   isDrawing = true;
   ctx.beginPath();
@@ -39,6 +39,26 @@ canvas.addEventListener("mouseup", () => {
 canvas.addEventListener("mousemove", (event) => {
   if (isDrawing) {
     ctx.lineTo(event.offsetX, event.offsetY);
+    ctx.strokeStyle = `${currentBrushColor}`;
+    ctx.stroke();
+  }
+});
+
+// Drawing with Touch
+canvas.addEventListener("touchstart", () => {
+  isDrawing = true;
+  ctx.beginPath();
+  ctx.lineWidth = currentBrushThickness;
+});
+
+canvas.addEventListener("touchend", () => {
+  isDrawing = false;
+});
+
+canvas.addEventListener("touchmove", (event) => {
+  if (isDrawing) {
+    const rect = canvas.getBoundingClientRect();
+    ctx.lineTo(event.touches[0].clientX - rect.left, event.touches[0].clientY - rect.top);
     ctx.strokeStyle = `${currentBrushColor}`;
     ctx.stroke();
   }
