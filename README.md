@@ -35,7 +35,6 @@
       - favicon.png
     - css
       - fonts.css
-      - header.css
       - main.css
       - reset.css
     - js

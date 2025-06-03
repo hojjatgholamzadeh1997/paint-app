@@ -6,19 +6,59 @@
     <title>paint-app</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+    <!-- Bootstrap Icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
     <!-- CSS Files -->
     <link rel="stylesheet" href="./css/fonts.css" />
     <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/main.css" />
   </head>
-  <body>
-    <!-- Header -->
-    <header>
-      Hello World!
-    </header>
+  <body style="background-color: #4296FC;">
     <!-- Main -->
-    <main></main>
+    <main>
+      <div class="paint-app">
+        <!-- Drawing Tools -->
+        <div class="drawing-tools">
+          <!-- Draw -->
+          <div class="draw">
+            <!-- Brush -->
+            <div class="brush active" id="brush">
+              <i class="bi bi-brush"></i>
+              <span>Brush</span>
+            </div>
+            <!-- Eraser -->
+            <div class="eraser" id="eraser">
+              <i class="bi bi-eraser"></i>
+              <span>Eraser</span>
+            </div>
+            <!-- Choose Color -->
+            <div class="choose-color">
+              <label for="brush-color">
+                <i class="bi bi-palette"></i>
+                <span>Choose Color</span>
+              </label>
+              <input type="color" id="brush-color">
+            </div>
+            <!-- Choose Thickness -->
+            <div class="choose-thickness">
+              <input type="range" min="1" max="11" id="brush-thickness">
+            </div>
+          </div>
+          <!-- Save or Clear -->
+          <div class="save-clear">
+            <button type="button" class="save" id="save">Save</button>
+            <button type="button" class="clear" id="clear">Clear</button>
+          </div>
+        </div>
+        <!-- Drawing Area -->
+        <div class="drawing-area" id="drawing-area">
+          <canvas></canvas>
+        </div>
+      </div>
+    </main>
     <!-- JS File -->
     <script src="./js/index.js"></script>
     <!-- For Not Supporting JavaScript Codes -->

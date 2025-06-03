@@ -1,1 +1,140 @@
 /* Main */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 15px;
+  max-width: 900px;
+  margin: 0 auto;
+  user-select: none;
+
+  /* Paint App */
+  & .paint-app {
+    background-color: #fff;
+    border-radius: 5px;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    height: 100%;
+    width: 100%;
+    
+    /* Drawing Tools */
+    & .drawing-tools {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: start;
+      padding: 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+      font-family: sans-serif;
+      font-size: 14px;
+
+      /* Draw */
+      & .draw {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        & .brush, .eraser, .choose-color {
+          display: flex;
+          flex-direction: row;
+          justify-content: start;
+          align-items: center;
+          gap: 10px;
+
+          & label {
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+            align-items: center;
+            gap: 10px;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+
+          &:hover {
+            color: #005CC8;
+            cursor: pointer;
+          }
+        }
+
+        & input[type="range"] {
+          width: 100%;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      @media screen and (min-width: 768px) {
+        & .draw {
+          flex-direction: row;
+          align-items: center;
+          gap: 30px;
+        }
+      }
+
+      @media screen and (min-width: 900px) {
+        & .draw {
+          margin-left: 25px;
+        }
+      }
+
+      @media screen and (min-width: 992px) {
+        & .draw {
+          gap: 40px;
+        }
+      }
+
+      /* Save or Clear */
+      & .save-clear {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        & .save, & .clear {
+          padding: 10px 15px;
+          border-radius: 7.5px;
+        }
+
+        & .save {
+          background-color: #4296FC;
+          color: #fff;
+
+          &:hover {
+            background-color: #1a81ff;
+          }
+        }
+
+        & .clear {
+          background-color: #808080;
+          color: #fff;
+
+          &:hover {
+            background-color: #6e6e6e;
+          }
+        }
+      }
+
+      @media screen and (min-width: 768px) {
+        & .save-clear {
+          flex-direction: row;
+        }
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      & .drawing-tools {
+        align-items: center;
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+.active {
+  color: #005CC8;
+}
