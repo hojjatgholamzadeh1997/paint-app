@@ -6,7 +6,7 @@
 
   **Start Date** : 31 May 2025
 
-  **End Date** : Developing...
+  **End Date** : 03 Jun 2025
 
   **Idea from** : [https://www.youtube.com/@next1code/javascript-projects/paint-app](https://youtu.be/lsist6hq6J4?list=PLhpS3tgUDZcr3HuRN9C5DMUNqUXIgifvH)
 
@@ -31,7 +31,7 @@
   - paint-app
     - assets
       - fonts
-      - images
+        - Poppins-Regular.ttf
       - favicon.png
     - css
       - fonts.css

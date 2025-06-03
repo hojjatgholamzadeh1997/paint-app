@@ -16,6 +16,7 @@ let isDrawing = false;
 let currentBrushThickness = "5";
 let currentBrushColor = "#000000";
 let lastBrushColor = "#000000";
+let isTherePaint = false;
 
 // Page Loading
 window.addEventListener("load", () => {
@@ -30,6 +31,7 @@ canvas.addEventListener("mousedown", () => {
   isDrawing = true;
   ctx.beginPath();
   ctx.lineWidth = currentBrushThickness;
+  isTherePaint = true;
 });
 
 canvas.addEventListener("mouseup", () => {
@@ -49,6 +51,7 @@ canvas.addEventListener("touchstart", () => {
   isDrawing = true;
   ctx.beginPath();
   ctx.lineWidth = currentBrushThickness;
+  isTherePaint = true;
 });
 
 canvas.addEventListener("touchend", () => {
@@ -75,11 +78,6 @@ brushColor.addEventListener("change", (event) => {
   lastBrushColor = event.target.value;
 });
 
-// Clear Draw
-clear.addEventListener("click", () => {
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-});
-
 // Brush
 brush.addEventListener("click", () => {
   brush.classList.add("active");
@@ -92,4 +90,24 @@ eraser.addEventListener("click", () => {
   eraser.classList.add("active");
   brush.classList.remove("active");
   currentBrushColor = "#ffffff";
+});
+
+// Clear Draw
+clear.addEventListener("click", () => {
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  isTherePaint = false;
+});
+
+// Save Draw
+save.addEventListener("click", () => {
+  if (isTherePaint) {
+    let fileName = window.prompt("Please Enter Your File Name...", `${Date.now()}`);
+    fileName === null ? fileName = `${Date.now()}` : "";
+    let link = document.createElement("a");
+    link.href = canvas.toDataURL();
+    link.download = `${fileName}.jpg`;
+    link.click();
+  } else {
+    alert("Your Drawing is Empty! \nPlease Draw Something...");
+  }
 });
